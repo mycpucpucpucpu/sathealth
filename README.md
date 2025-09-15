@@ -7,7 +7,7 @@ To install:
 
 pip install -r requirements.txt
 
-# train and inference 
+# Train and inference 
 To train a light model and get the prediction without Bayesian optimization, unzip the file "dataset.zip" and run "totaldataset_optimal_angle_finder.py" with the dataset file put under the right file path.
 
 To train a model with the complete autogluon structure, run "totaldataset_optimal_angle_finder_auto.py" instead.
