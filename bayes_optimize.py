@@ -305,21 +305,21 @@ def create_scaled_predictor_wrapper(predictor):
                 data = pd.read_csv("data.csv")
                 
                 base_stats = {
-                    'mean': data['电流'].mean(),
-                    'std': data['电流'].std(),
-                    'min': data['电流'].min(),
-                    'max': data['电流'].max()
+                    'mean': data['current'].mean(),
+                    'std': data['current'].std(),
+                    'min': data['current'].min(),
+                    'max': data['current'].max()
                 }
                 
-                feature_columns = ['卫星姿态1', '卫星姿态2', '卫星姿态3', '卫星姿态4', 
-                                  '太阳矢量x', '太阳矢量y', '太阳矢量z', '时段', 
+                feature_columns = ['pos1', 'pos2', 'pos3', 'pos4', 
+                                  'sunlight_x', 'sunlight_y', 'sunlight_z', 'time', 
                                   'angle_sin', 'angle_cos', 'source']
                 
                 scale_factors = []
                 
                 for i in range(min(100, len(data))):
                     sample = data.iloc[i]
-                    true_current = sample['电流']
+                    true_current = sample['current']
                     
                     if abs(true_current) < 1e-6:
                         continue
@@ -417,9 +417,9 @@ def load_trained_model(model_dir="./satellite_model"):
                 feature_columns = pickle.load(f)
         else:
             feature_columns = [
-                '卫星姿态1', '卫星姿态2', '卫星姿态3', '卫星姿态4',
-                '太阳矢量x', '太阳矢量y', '太阳矢量z',
-                '时段', 'angle_sin', 'angle_cos', 'source'
+                'pos1', 'pos2', 'pos3', 'pos4', 
+                'sunlight_x', 'sunlight_y', 'sunlight_z', 'time', 
+                'angle_sin', 'angle_cos', 'source'
             ]
         
         wrapped_predictor = create_scaled_predictor_wrapper(predictor)
