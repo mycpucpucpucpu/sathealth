@@ -1,5 +1,5 @@
 # sathealth
-#Bayesian Optimization
+# Bayesian Optimization
 Bayesian optimization can be directly applied by: python bayes_optimize.py if needed data and trained model are under the same directory.
 A feasible structure may be like:
 ----bayes_optimize.py
